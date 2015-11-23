@@ -1,0 +1,64 @@
+@import "variables";
+ul.ng-tag-editor {
+  & {
+    padding: 0;
+    border: 1px solid #95a5a6;
+    font-family: sans-serif;
+  }
+  li {
+    margin: 4px 5px;
+    padding: 2px 5px;
+    display: inline-block;
+    color: @tagTextColor;
+    background-color: @tagBackgroundColor;
+    transition:
+      box-shadow 250ms;
+    &:hover:not(.editor) {
+      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 10%);
+    }
+    &.editor {
+      padding: 2px 0;
+      color: inherit;
+      background-color: inherit;
+    }
+    a.remove-tag {
+      & {
+        text-decoration: none;
+        color: inherit;
+      }
+      &:hover {
+        color: darken(@tagTextColor, 20%);
+      }
+    }
+  }
+  input.editor {
+    @transitionDuration: 500ms;
+    border: 1px solid #95a5a6;
+    color: inherit;
+    background-color: inherit;
+    min-height: 1rem;
+    transition:
+      background-color @transitionDuration,
+      color @transitionDuration,
+      border @transitionDuration / 2,
+      box-shadow @transitionDuration / 2;
+    &:focus {
+      outline: 0;
+      border: 1px solid darken(@tagBackgroundColor, 50%);
+      box-shadow:
+        0 0 3px 2px rgba(
+          red(@tagBackgroundColor),
+          green(@tagBackgroundColor),
+          blue(@tagBackgroundColor),
+          70%
+        );
+    }
+    &.maxTagNumExceeded {
+      &::placeholder {
+        color: rgba(250, 250, 251, 0.5);
+      }
+      color: #FAFAFB;
+      background-color: rgba(233, 30, 99, 0.5);
+    }
+  }
+}

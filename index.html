@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Tageditor Example</title>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <script src="dist/angular-tageditor.js"></script>
+  <link rel="stylesheet" href="dist/assets.css">
+  <script>
+    (function () {
+      angular.module("test", [
+        "ngTagEditor"
+      ]).controller("mainController", [
+        "$scope",
+        function (scope) {
+          scope.tags = ["test1", "test2", "test3"];
+          scope.changed = function () {
+            return scope.tagStyle(arguments[0])
+          };
+          scope.tagStyle = function (index) {
+            if(index%2 === 1) {
+              return {
+                "background-color": "#F8BBD0"
+              };
+            }
+          };
+        }
+      ]);
+    }).call(this);
+  </script>
+</head>
+<body data-ng-app="test" data-ng-controller="mainController">
+  <h1>AngularJS Tag Editor Example</h1>
+  <textarea class="ng-tag-editor"
+    data-ng-model="tags"
+    data-placeholder="Add tag here..."
+    data-ng-max-text-length="20"
+    data-ng-max-tag-length="10"
+    data-ng-change="changed(index)"
+    data-tag-style="tagStyle(index)">
+  </textarea>
+</body>
+</html>

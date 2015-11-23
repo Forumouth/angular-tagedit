@@ -1,0 +1,27 @@
+{
+  "name": "angular-tageditor",
+  "description": "A wrapper of jQuery-tagEditor for AngularJS",
+  "authors": [
+    "Hiroaki Yamamoto <hiroaki@hysoftware.net>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "AngularJS",
+    "TagEditor",
+    "jQuery-tagEditor"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/forumouth/angular-tageditor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.7",
+    "angular-mocks": "~1.4.7"
+  }
+}

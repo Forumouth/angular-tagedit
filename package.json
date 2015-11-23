@@ -1,0 +1,60 @@
+{
+  "name": "angular-tageditor",
+  "version": "0.0.0",
+  "description": "A wrapper of jQuery-tagEditor for AngularJS",
+  "scripts": {
+    "test": "gulp && gulp e2e.firefox",
+    "install": "npm run bowerInstall && npm run webdriverUpdate",
+    "webdriverUpdate": "node node_modules/protractor/bin/webdriver-manager update",
+    "bowerInstall": "node node_modules/bower/bin/bower install",
+    "bowerUpdate": "node node_modules/bower/bin/bower update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forumouth/angular-tageditor.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "TagEditor",
+    "jQuery-tagEditor"
+  ],
+  "author": "Hiroaki Yamamoto <hiroaki@hysoftware.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/forumouth/angular-tageditor/issues"
+  },
+  "homepage": "https://github.com/forumouth/angular-tageditor#readme",
+  "devDependencies": {
+    "bower": "^1.6.5",
+    "chai": "^3.4.0",
+    "chai-as-promised": "^5.1.0",
+    "coffee-script": "^1.10.0",
+    "coffeelint-stylish": "^0.1.2",
+    "freeport": "^1.0.5",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-coffeelint": "^0.5.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-help": "^1.6.1",
+    "gulp-karma-runner": "^1.1.8",
+    "gulp-less": "^3.0.3",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-protractor": "Forumouth/gulp-protractor",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "karma-chai-plugins": "^0.6.0",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-coffee-preprocessor": "^0.3.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-mocha": "^0.2.0",
+    "karma-sinon": "^1.0.4",
+    "less-plugin-clean-css": "^1.5.1",
+    "mocha": "^2.3.3",
+    "protractor": "^3.0.0",
+    "q": "^1.4.1"
+  }
+}
