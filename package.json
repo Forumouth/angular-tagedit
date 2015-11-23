@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "A wrapper of jQuery-tagEditor for AngularJS",
   "scripts": {
-    "test": "gulp && gulp e2e.firefox",
+    "test": "gulp",
     "install": "npm run bowerInstall && npm run webdriverUpdate",
     "webdriverUpdate": "node node_modules/protractor/bin/webdriver-manager update",
     "bowerInstall": "node node_modules/bower/bin/bower install",

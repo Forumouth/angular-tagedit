@@ -48,10 +48,18 @@ karmaConf =
     "karma-mocha"
     "karma-chai-plugins"
     "karma-chrome-launcher"
-    "karma-coffee-preprocessor"
     "karma-firefox-launcher"
+    "karma-coffee-preprocessor"
     "karma-sinon"
   ]
+
+if process.env.mode is "CI"
+  karmaConf.plugins.splice(
+    karmaConf.plugins.indexOf("karma-chrome-launcher"), 1
+  )
+  karmaConf.browsers.splice(
+    karmaConf.browsers.indexOf("firefox"), 1
+  )
 
 thirdParty = [
   "jquery/dist/jquery.js"

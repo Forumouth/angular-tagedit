@@ -10,3 +10,6 @@ env:
   - "mode=CI DISPLAY=:99.0"
 before_script:
   - "sh -e /etc/init.d/xvfb start"
+script:
+  - "gulp"
+  - "gulp e2e.firefox"
