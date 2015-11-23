@@ -6,8 +6,8 @@ node_js:
   - "iojs"
 addons:
   firefox: "latest"
-before_script:
-  - "/etc/init.d/xvfb start"
 env:
   - "mode=CI"
   - "DISPLAY=:99.0"
+before_script:
+  - "sh -e /etc/init.d/xvfb start"
