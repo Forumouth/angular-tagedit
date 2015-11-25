@@ -36,10 +36,8 @@ angular.module("ngTagEditor.controller", [
           "index": index,
           "value": value
         )
-        scope.styles[index] =
-          scope.ngChange(callArg) or scope.styles[index]
-        scope.styles[index] =
-          scope.ngAdd(callArg) or scope.styles[index]
+        scope.styles[index] = scope.ngChange(callArg) or scope.styles[index]
+        scope.styles[index] = scope.ngAdd(callArg) or scope.styles[index]
       else if "maxTagNumExceeded" not in scope.editorClass
         scope.editorClass.push "maxTagNumExceeded"
     scope.blur = ->
@@ -57,7 +55,7 @@ angular.module("ngTagEditor.controller", [
     scope.styles = {}
     scope.ngModel.forEach (tag, index) ->
       style = scope.tagStyle (
-        "tag": tag
+        "value": tag
         "index": index
       )
       if style
