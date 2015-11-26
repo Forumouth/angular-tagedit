@@ -18,7 +18,7 @@
     "dist/angular-tageditor.js",
     "dist/angular-tageditor.min.js",
     "dist/assets.css",
-    "dist/assets.min.css",
+    "dist/assets.min.css"
   ],
   "moduleType": "globals",
   "homepage": "https://github.com/forumouth/angular-tageditor",
