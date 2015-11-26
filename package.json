@@ -11,12 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/forumouth/angular-tageditor.git"
+    "url": "git+https://github.com/Forumouth/angular-tageditor.git"
   },
   "keywords": [
     "AngularJS",
-    "TagEditor",
-    "jQuery-tagEditor"
+    "TagEditor"
   ],
   "author": "Hiroaki Yamamoto <hiroaki@hysoftware.net>",
   "license": "MIT",
@@ -24,6 +23,7 @@
     "url": "https://github.com/forumouth/angular-tageditor/issues"
   },
   "homepage": "https://github.com/forumouth/angular-tageditor#readme",
+  "main": "dist/angular-tageditor.js",
   "devDependencies": {
     "bower": "^1.6.5",
     "chai": "^3.4.0",

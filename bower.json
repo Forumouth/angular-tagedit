@@ -4,13 +4,23 @@
   "authors": [
     "Hiroaki Yamamoto <hiroaki@hysoftware.net>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Forumouth/angular-tageditor.git"
+  },
   "license": "MIT",
   "keywords": [
     "AngularJS",
     "TagEditor",
     "jQuery-tagEditor"
   ],
-  "moduleType": [],
+  "main": [
+    "dist/angular-tageditor.js",
+    "dist/angular-tageditor.min.js",
+    "dist/assets.css",
+    "dist/assets.min.css",
+  ],
+  "moduleType": "globals",
   "homepage": "https://github.com/forumouth/angular-tageditor",
   "ignore": [
     "**/.*",
