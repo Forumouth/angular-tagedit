@@ -70,7 +70,7 @@ describe "TagEditor E2E tests", ->
       describe "Type tags more than # of appreciated tags", ->
         tagLim = undefined
         before ->
-          directive.getAttribute("data-ng-max-tag-length").then (value) ->
+          directive.getAttribute("data-tag-max-length").then (value) ->
             tagLim = parseInt value
             for textNum in [4..(tagLim + 3)]
               do (textNum) ->
@@ -86,7 +86,7 @@ describe "TagEditor E2E tests", ->
                 (classList) ->
                   ("maxTagNumExceeded" in classList)
               )
-            )
+            ), 1000
           ).then (contains) -> expect(contains).is.true
         it "The edito should be empty", ->
           expect(input.getAttribute "value").is.eventually.empty
@@ -108,7 +108,7 @@ describe "TagEditor E2E tests", ->
                   (classList) ->
                     ("maxTagNumExceeded" not in classList)
                 )
-              )
+              ), 1000
             ).then (contains) -> expect(contains).is.true
         describe "by clicking a tag", ->
           before ->
@@ -122,7 +122,7 @@ describe "TagEditor E2E tests", ->
                   (classList) ->
                     ("maxTagNumExceeded" in classList)
                 )
-              )
+              ), 1000
             ).then (contains) -> expect(contains).is.true
             items.first().element(
               By.xpath("..")
@@ -136,5 +136,5 @@ describe "TagEditor E2E tests", ->
                   (classList) ->
                     ("maxTagNumExceeded" not in classList)
                 )
-              )
+              ), 1000
             ).then (contains) -> expect(contains).is.true

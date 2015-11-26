@@ -8,9 +8,9 @@ describe "Tag Editor controller test", ->
     "$controller"
     (root, ctrlConstructor) ->
       scope = root.$new()
-      scope.ngAdd = sinon.spy()
-      scope.ngDel = sinon.spy()
-      scope.ngChange = sinon.spy()
+      scope.tagAdd = sinon.spy()
+      scope.tagDel = sinon.spy()
+      scope.tagChange = sinon.spy()
       scope.tmpStyle =
         "width": undefined
       ctrl = ctrlConstructor "ngTagEditorController", (
@@ -56,11 +56,11 @@ describe "Tag Editor controller test", ->
         "test4"
       ]
     it "ngChange should be called once", ->
-      expect(scope.ngChange.calledOnce).is.true
+      expect(scope.tagChange.calledOnce).is.true
     it "ngAdd shouldn't be called", ->
-      expect(scope.ngAdd.called).is.false
+      expect(scope.tagAdd.called).is.false
     it "ngDel should be called once", ->
-      expect(scope.ngDel.calledOnce).is.true
+      expect(scope.tagDel.calledOnce).is.true
 
   describe "insertTag calling test", ->
     beforeEach ->
@@ -78,11 +78,11 @@ describe "Tag Editor controller test", ->
         "test4"
       ]
     it "ngChange should be called once", ->
-      expect(scope.ngChange.calledOnce).is.true
+      expect(scope.tagChange.calledOnce).is.true
     it "ngAdd should be called once", ->
-      expect(scope.ngAdd.calledOnce).is.true
+      expect(scope.tagAdd.calledOnce).is.true
     it "ngDel shouldn't be called", ->
-      expect(scope.ngDel.called).is.false
+      expect(scope.tagDel.called).is.false
 
   describe "Calling keydown function", ->
     modelObj = ["test1", "test2", "test3"]

@@ -6,12 +6,12 @@ angular.module("ngTagEditor", [
       "restrict": "AC"
       "scope":
         "ngModel": "="
-        "ngChange": "&"
-        "ngAdd": "&"
-        "ngDel": "&"
+        "tagChange": "&"
+        "tagAdd": "&"
+        "tagDel": "&"
         "tagStyle": "&"
-        "ngMaxTextLength": "="
-        "ngMaxTagLength": "="
+        "textMaxLength": "="
+        "tagMaxLength": "="
         "placeholder": "@"
       "replace": true
       "template": (
@@ -30,7 +30,7 @@ angular.module("ngTagEditor", [
               data-ng-model=\"tmpHolder\"
               data-ng-class=\"editorClass\"
               placeholder=\"{{ placeholder }}\"
-              maxlength=\"{{ ngMaxTextLength }}\"
+              maxlength=\"{{ textMaxLength }}\"
               size=\"{{tmpHolder.length || placeholder.length || 10}}\"
               data-ng-keydown=\"keydown($event)\"
               data-ng-blur=\"blur()\">
