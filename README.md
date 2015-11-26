@@ -78,15 +78,15 @@ Here are the options that can be specified as attirbutes:
 
 * `data-ng-model` (Required): Specify the model to edit. (
   I don't think this option needs description.)
-* `data-ng-change` (Optional): When the model specified by `data-ng-model` is
+* `data-tag-change` (Optional): When the model specified by `data-ng-model` is
   changed (i.e. a tag is added/removed), this option is evaluated.
   In addition you can use `index` for where is changed and `value` for
   the text of tag
-* `data-ng-add` (Optional): When a tag is added to the model specified by
-  `data-ng-model`, this option is evaluated.
+* `data-tag-add` (Optional): When a tag is added to the model specified by
+  `data-tag-model`, this option is evaluated.
   In addition you can use `index` for where is changed and `value` for
   the text of tag
-* `data-ng-del` (Optional): When a tag is deleted to the model specified by
+* `data-tag-del` (Optional): When a tag is deleted to the model specified by
   `data-ng-model`, this option is evaluated.
   In addition you can use `index` for where is changed and `value` for
   the text of tag
@@ -95,16 +95,16 @@ Here are the options that can be specified as attirbutes:
   `data-ng-style` for the individual tags.
   In addition you can use `index` for where is changed and `value` for
   the text of tag
-* `data-ng-max-text-length` (Optional): `data-ng-maxlength` for editor
+* `data-text-max-length` (Optional): `data-ng-maxlength` for editor
   (see styling paragraph) If not specified, no limit.
-* `data-ng-max-tag-length` (Optional): maximum number of the tag.
+* `data-tag-max-length` (Optional): maximum number of the tag.
   If not specified, no limit.
 * `data-placeholder` (Optional): `placeholder` for the editor.
 
-### Note: the order of `ng-add` / `ng-del` and `ng-change`
+### Note: the order of `tag-add` / `tag-del` and `tag-change`
 
-`ng-change` is called **before** `ng-add` / `ng-del`. This might be a problem
-when you edit styles from script.
+`tag-change` is called **before** `tag-add` / `tag-del`. This might be a
+problem when you edit styles from script.
 
 ## Styling
 
@@ -125,7 +125,7 @@ Here are the purposes of the tag:
 * `input.editor`: This is used for adding a tag. And as we can see its name,
   it works as an editor. And of course, this must be editable.
 * `input.editor.maxTagNumExceeded`: When the user tries to add a tag over the
-  number of tags that is specified by `data-ng-max-text-length`,
+  number of tags that is specified by `data-text-max-length`,
    `maxTagNumExceeded` is added to `input.editor`.
 
 When you want to create a stylesheet for this tageditor, above query string
@@ -142,7 +142,7 @@ ul.ng-tag-editor input.editor.maxTagNumExceeded {
 ### Write by script
 
 Not only writing with css you can write styles from script by returning the
-proper value on `ng-add` or `ng-change`. For example, like this:
+proper value on `tag-add` or `tag-change`. For example, like this:
 
 `example.coffee`
 ```coffee
