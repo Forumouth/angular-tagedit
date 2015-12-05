@@ -1,0 +1,27 @@
+#!/bin/sh
+
+repo=~/bower-angular-tag-editor
+
+echo "Cloning/Pulling repo"
+if ! [ -d ${repo} ]; then
+  git clone https://hiroaki-yamamoto:${token}@github.com/Forumouth/bower-angular-tageditor.git ${repo}
+  pushd ${repo}
+else
+  pushd ${repo}
+  git pull origin
+fi
+popd
+
+echo "Copying compiled files and some extras..."
+rsync -aP --delete --delete-excluded --exclude-from=./rsync.cfg --include-from=./rsync.cfg . ${repo}
+
+echo "Done. deploying to the repo..."
+pushd ${repo}
+
+git add .
+git commit -m "This commit is corresponding with: ${TRAVIS_COMMIT}"
+git push origin master
+
+popd
+
+echo "Done"
