@@ -45,7 +45,10 @@ deploy () {
   git config user.name "Hiroaki Yamamoto (From Travis CI)"
   git config user.email "hiroaki-yamamoto@users.noreply.github.com"
   git commit -m "This commit is corresponding with: ${TRAVIS_COMMIT}"
-  git push origin master
+  git push origin master || {
+    git reset --hard HEAD
+    echo "Failed. the repo already up-to-date.";
+  }
   cd -
   echo "Done."
 }
