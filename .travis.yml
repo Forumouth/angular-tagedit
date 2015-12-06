@@ -1,4 +1,5 @@
 language: node_js
+compiler: clang-3.6
 node_js:
   - "5.0"
   - "4.1"
@@ -7,14 +8,13 @@ cache:
   directories:
     - "node_modules"
     - "bower_components"
-    - "~/bower-angular-tag-editor"
 addons:
   firefox: "latest"
 env:
   global:
     - secure: "R2dvtylh0fZJlvpKXepeId44lQM66PWHK3MmQnzCP+FLuwvsrYRif2Mi51te3m3CIlyX9MQrtgM8va6a6JYgYxycuCZBeoCVBLrC5XnRUpJqUamUglrB/5lBn9WzJHpDdFQi9q/XjxxuRs318X5Pkg6vegbfhU15Lg6zmaEFkyk4/K8wlhwU+XgF54OJOMdz7F2R2eGomYquActvJ8PHtNDtL/YK2yhGV/uC4jkZLVWKGIG8RfcTqIfM9X4r9x7zJ8vfkAAABg+hDNO0siHoEzWpAqgFI+phAz53mCij+keiIiAg4o8ysYxZ3lEf7Di9L0vz4rJ33+hXlyqNS6aemK0CKqEz5eywkdTLwJ9er8+jKJfSyE3h6nEpkEXPK6Hz8dhOYPuucSmuichlzP0VdD+SxK8BqILtjK68y6M8J2S3y90tesdvITRobDMYlNTx+1lG1LaWRLQWfHZkz4TEE7YYsyGoUN7/gYdMucswDWX13UipmSKe4VChMMVTTtwT5WdzqR7moV0OiMOBxrf1Cb9yYpJXk1D0GKztTUhbkX7TVm9FdTd/jqqGLWwJ7ahB3MsIeZUb/YbRcDQqBF0qTYVwdFKIcWFdE+VlH+5i2KzHonCE2zYb/We8oZDcCePiB79CWpQBWoV6bKFuOfN4DWmDVABS97R8aLRYHXXFYmE="
   matrix:
-    - "mode=CI DISPLAY=:99.0"
+    - "mode=CI DISPLAY=:99.0 CXX=clang-3.6"
 before_script:
   - "sh -e /etc/init.d/xvfb start"
 script:
