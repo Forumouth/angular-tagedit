@@ -42,6 +42,8 @@ deploy () {
   echo "Deploying to the repo..."
   cd ${repo}
   git add .
+  git config user.name "Hiroaki Yamamoto (From Travis CI)"
+  git config user.email "hiroaki-yamamoto@users.noreply.github.com"
   git commit -m "This commit is corresponding with: ${TRAVIS_COMMIT}"
   git push origin master
   cd -
