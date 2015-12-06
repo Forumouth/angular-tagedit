@@ -1,11 +1,11 @@
 #!/bin/sh -e
 
-# if [ "${TRAVIS_BRANCH}" != "master" ]; then
-#   echo "This deployment script is written for master branch only."
-#   exit 0
-# fi
+if [ "${TRAVIS_BRANCH}" != "master" ]; then
+  echo "This deployment script is written for master branch only."
+  exit 0
+fi
 
-repo=~/bower-angular-tag-editor
+repo="~/bower-angular-tag-editor"
 
 push_tag() {
   if [ -n "${TRAVIS_TAG}" ]; then
