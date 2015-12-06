@@ -1,27 +1,54 @@
-#!/bin/sh
+#!/bin/sh -e
+
+# if [ "${TRAVIS_BRANCH}" != "master" ]; then
+#   echo "This deployment script is written for master branch only."
+#   exit 0
+# fi
 
 repo=~/bower-angular-tag-editor
 
-echo "Cloning/Pulling repo"
-if ! [ -d ${repo} ]; then
-  git clone https://hiroaki-yamamoto:${token}@github.com/Forumouth/bower-angular-tageditor.git ${repo}
+push_tag() {
+  if [ -n "${TRAVIS_TAG}" ]; then
+    echo "Pushing tag..."
+    pushd ${repo}
+    git tag -a "${TRAVIS_TAG}" -m "Version: ${TRAVIS_TAG}"
+    git push origin --tag ${TRAVIS_TAG}
+    popd
+    echo "Done."
+  fi
+}
+
+clone_or_pull() {
+  echo "Cloning/Pulling repo"
+  if ! [ -d ${repo} ]; then
+    git clone https://hiroaki-yamamoto:${token}@github.com/Forumouth/bower-angular-tageditor.git ${repo}
+    pushd ${repo}
+  else
+    pushd ${repo}
+    git pull origin
+  fi
+  popd
+  echo "Done."
+}
+
+copy_files() {
+  echo "Copying compiled files and some extras..."
+  rsync -aCP --delete --exclude-from=./rsync.cfg --include-from=./rsync.cfg . ${repo}
+  echo "Done."
+}
+
+
+deploy () {
+  echo "Deploying to the repo..."
   pushd ${repo}
-else
-  pushd ${repo}
-  git pull origin
-fi
-popd
+  git add .
+  git commit -m "This commit is corresponding with: ${TRAVIS_COMMIT}"
+  git push origin master
+  popd
+  echo "Done."
+}
 
-echo "Copying compiled files and some extras..."
-rsync -aP --delete --delete-excluded --exclude-from=./rsync.cfg --include-from=./rsync.cfg . ${repo}
-
-echo "Done. deploying to the repo..."
-pushd ${repo}
-
-git add .
-git commit -m "This commit is corresponding with: ${TRAVIS_COMMIT}"
-git push origin master
-
-popd
-
-echo "Done"
+clone_or_pull
+copy_files
+deploy
+push_tag
