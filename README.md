@@ -85,11 +85,15 @@ Here are the options that can be specified as attirbutes:
 * `data-tag-add` (Optional): When a tag is added to the model specified by
   `data-tag-model`, this option is evaluated.
   In addition you can use `index` for where is changed and `value` for
-  the text of tag
+  the text of the tag. By returning key-value, the corresponding style will be
+  set as ng-style.
 * `data-tag-del` (Optional): When a tag is deleted to the model specified by
   `data-ng-model`, this option is evaluated.
   In addition you can use `index` for where is changed and `value` for
-  the text of tag
+  the text of tag. By returning key-value, the corresponding style will be
+  set as ng-style. To remove the style, return `null` in this function. When
+  returning `undefined`(i.g. the default value of Javascript function call),
+  nothing will be changed.
 * `data-tag-style` (Optional): This is evaluated when individual tags are
   initialized and the returned value from this function is set to
   `data-ng-style` for the individual tags.
@@ -108,7 +112,7 @@ problem when you edit styles from script.
 
 ## Styling
 
-### Writing in css (or alt-stylesheet)
+### Writing in css (or altCSS)
 
 As you can see [style script](./src/main.less), this tageditor has just 3
 simple elements; `<ul>` with `ng-tag-editor` class, `<li>` tag, and `input`
@@ -142,7 +146,7 @@ ul.ng-tag-editor input.editor.maxTagNumExceeded {
 ### Write by script
 
 Not only writing with css you can write styles from script by returning the
-proper value on `tag-add` or `tag-change`. For example, like this:
+proper value on `tag-add`, `ng-del` or `tag-change`. For example, like this:
 
 `example.coffee`
 ```coffee

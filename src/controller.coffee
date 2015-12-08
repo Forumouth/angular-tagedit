@@ -22,9 +22,14 @@ angular.module("ngTagEditor.controller", [
         "index": index,
         "value": value
       )
-      scope.tagChange callArg
-      scope.tagDel callArg
-      delete scope.styles[scope.styles.length - 1]
+      style = scope.tagChange callArg
+      style = scope.tagDel(callArg) or style
+      if style is null
+        scope.styles.splice index, 1
+      else if style
+        scope.styles[index] = style
+      else
+        scope.styles.pop()
     scope.insertTag = (index, value) ->
       if !scope.tagMaxLength or scope.ngModel.length < scope.tagMaxLength
         rest = scope.ngModel.splice index, scope.ngModel.length, value
@@ -48,7 +53,7 @@ angular.module("ngTagEditor.controller", [
       else if event.keyCode is 9
         scope.blur()
         event.preventDefault()
-    scope.styles = {}
+    scope.styles = []
     scope.editorClass =
       'maxTagNumExceeded': scope.ngModel.length >= scope.tagMaxLength
     scope.ngModel.forEach (tag, index) ->
