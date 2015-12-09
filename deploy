@@ -12,7 +12,7 @@ push_tag() {
     echo "Pushing tag..."
     cd ${repo}
     git tag -a "${TRAVIS_TAG}" -m "Version: ${TRAVIS_TAG}"
-    git push origin --tag ${TRAVIS_TAG}
+    git push -q origin --tag ${TRAVIS_TAG}
     cd -
     echo "Done."
   fi
@@ -21,11 +21,11 @@ push_tag() {
 clone_or_pull() {
   echo "Cloning/Pulling repo"
   if ! [ -d ${repo} ]; then
-    git clone https://hiroaki-yamamoto:${token}@github.com/Forumouth/bower-angular-tageditor.git ${repo}
+    git clone -q https://hiroaki-yamamoto:${token}@github.com/Forumouth/bower-angular-tageditor.git ${repo}
     cd ${repo}
   else
     cd ${repo}
-    git pull origin
+    git pull -q origin
   fi
   cd -
   echo "Done."
@@ -44,8 +44,8 @@ deploy () {
   git add .
   git config user.name "Hiroaki Yamamoto (From Travis CI)"
   git config user.email "hiroaki-yamamoto@users.noreply.github.com"
-  git commit -m "This commit is corresponding with: ${TRAVIS_COMMIT}"
-  git push origin master || {
+  git commit -m "[TRAVIS DEPLOY BOT] COMMIT: ${TRAVIS_COMMIT}"
+  git push -q origin master || {
     git reset --hard HEAD
     echo "Failed. the repo already up-to-date.";
   }
