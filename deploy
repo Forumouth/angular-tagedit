@@ -1,7 +1,8 @@
 #!/bin/sh -e
 
-if [ "${TRAVIS_BRANCH}" != "master" ]; then
-  echo "This deployment script is written for master branch only. Not supported: ${TRAVIS_BRANCH}"
+if [ "${TRAVIS_BRANCH}" != "master" -a "${TRAVIS_BRANCH}" != "${TRAVIS_TAG}"]; then
+  echo "This deployment script is written for master branch or tag branch only."
+  echo "Not supported branch: ${TRAVIS_BRANCH} or tag: ${TRAVIS_TAG}"
   exit 0
 fi
 
