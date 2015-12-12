@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 
 if [ "${TRAVIS_BRANCH}" != "master" -a "${TRAVIS_BRANCH}" != "${TRAVIS_TAG}" ]; then
   echo "This deployment script is written for master branch or tag branch only."
