@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 if [ "${TRAVIS_BRANCH}" != "master" ]; then
-  echo "This deployment script is written for master branch only."
+  echo "This deployment script is written for master branch only. Not supported: ${TRAVIS_BRANCH}"
   exit 0
 fi
 
