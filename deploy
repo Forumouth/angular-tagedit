@@ -13,6 +13,10 @@ push_tag() {
   if [ -n "${TRAVIS_TAG}" ]; then
     echo "Tag found: ${TRAVIS_TAG}"
     cd ${repo}
+    git config user.name "Hiroaki Yamamoto (From Travis CI)"
+    git config user.email "hiroaki-yamamoto@users.noreply.github.com"
+    git add .
+    git commit -m "[TRAVIS DEPLOY BOT] COMMIT: ${TRAVIS_COMMIT}, TAG: ${TRAVIS_TAG}"
     git tag -a "${TRAVIS_TAG}" -m "Version: ${TRAVIS_TAG}"
     git push -q origin --tag ${TRAVIS_TAG}
     cd -
