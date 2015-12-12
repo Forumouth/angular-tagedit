@@ -53,12 +53,22 @@ ul.ng-tag-editor {
           70%
         );
     }
+    span.editor {
+      &:extend(input.editor);
+    }
     &.maxTagNumExceeded {
-      &::placeholder {
-        color: rgba(250, 250, 251, 0.5);
+      border: 1px solid @maxTagNumExceededBackgroundColor;
+      &:focus {
+        outline: 0;
+        border: 1px solid darken(@maxTagNumExceededBackgroundColor, 20%);
+        box-shadow:
+          0 0 3px 2px rgba(
+            red(@maxTagNumExceededBackgroundColor),
+            green(@maxTagNumExceededBackgroundColor),
+            blue(@maxTagNumExceededBackgroundColor),
+            70%
+          );
       }
-      color: #FAFAFB;
-      background-color: rgba(233, 30, 99, 0.5);
     }
   }
 }

@@ -1,7 +1,7 @@
 angular.module("ngTagEditor.controller", [
 ]).controller "ngTagEditorController", [
-  "$scope"
-  (scope) ->
+  "$scope", "$compile"
+  (scope, compile) ->
     checkModel = (model) ->
       if model not instanceof Array and model
         throw new Error "ngModel should be an array or empty"
@@ -43,8 +43,10 @@ angular.module("ngTagEditor.controller", [
       else
         scope.editorClass.maxTagNumExceeded = true
     scope.blur = ->
-      if scope.tmpHolder
-        pushText()
+      if scope.tmpHolder isnt undefined
+        scope.tmpHolder = scope.tmpHolder.trim()
+        if scope.tmpHolder
+          pushText()
     scope.keydown = (event) ->
       if event.keyCode is 8
         if not scope.tmpHolder
@@ -56,6 +58,10 @@ angular.module("ngTagEditor.controller", [
     scope.styles = []
     scope.editorClass =
       'maxTagNumExceeded': scope.ngModel.length >= scope.tagMaxLength
+    scope.$watch "measure.offsetWidth", (width) ->
+      scope.editorStyle.width = width + "px"
+    scope.editorStyle =
+      "width": "auto"
     scope.ngModel.forEach (tag, index) ->
       style = scope.tagStyle (
         "value": tag

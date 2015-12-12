@@ -11,8 +11,8 @@ describe "Tag Editor controller test", ->
       scope.tagAdd = sinon.spy()
       scope.tagDel = sinon.spy()
       scope.tagChange = sinon.spy()
-      scope.tmpStyle =
-        "width": undefined
+      scope.measure =
+        "offsetWidth": 8
       ctrl = ctrlConstructor "ngTagEditorController", (
         "$scope": scope
       )
