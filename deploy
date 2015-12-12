@@ -55,8 +55,8 @@ deploy () {
 clone_or_pull
 copy_files
 
-if [ "${TRAVIS_BRANCH}" == "${TRAVIS_TAG}" ]; then
+if [ "${TRAVIS_BRANCH}" = "${TRAVIS_TAG}" ]; then
   push_tag
-elif [ "${TRAVIS_BRANCH}" == "master" ]; then
+elif [ "${TRAVIS_BRANCH}" = "master" ]; then
   deploy
 fi
